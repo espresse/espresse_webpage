@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title></title>
+    <%= stylesheet_tag("style") %>
+    <%= javascript_tag("jquery-1.6.4.min") %>
+  </head>
+  <body>
+    <div>
+      <% if current_user %>
+        Logged in as <%= current_user.email %>
+        <%= link_to "Log out", url(:signout) %>
+      <% else %>
+        <%= link_to "Sign up", url(:signup) %> or 
+        <%= link_to "Log in", url(:signin) %>
+      <% end %>
+    </div>
+
+    <% %w[notice error warning alert info].each do |key| %>
+      <% if flash[key] %>
+        <div id="<%= "flash_#{key}" %>" class="flash">
+          <%= flash[key] %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <div id="head">
+      <% yield_content :head %>
+    <div>
+
+    <%= yield %>
+
+    <hr />
+    <div class="small_text">
+      <p>PARAMS: <%= params %></p>
+      <p>ENV: <%= ENV['RACK_ENV'] %></p>
+      <p>Session: <%= session %></p>
+    </div>
+
+  </body>
+</html>

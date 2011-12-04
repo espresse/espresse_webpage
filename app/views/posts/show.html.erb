@@ -1,0 +1,9 @@
+<%= @post.title %>
+<p><%= @post.content %></p>
+<%= link_to "Edit", url(:edit_post, :id=>@post.permalink) %> 
+| 
+<%= link_to "Show all", url(:posts) %> |
+<form accept-charset="UTF-8" action="<%= url_to(@post, :destroy) %>" method="post">
+    <input name="_method" type="hidden" value="delete" />
+    <input type="submit" value="Delete" />
+</form>

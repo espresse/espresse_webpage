@@ -1,0 +1,20 @@
+<form accept-charset="UTF-8" action="<%= @post.created_at ? url_to(@post, :update) : url(:create_post) %>" method="post">
+  <%= csrf_protection_tag %>
+    <% if @post.created_at %>
+        <input name="_method" type="hidden" value="put" />
+    <% end %>
+    <input name="utf8" type="hidden" value="&#x2713;" />
+  <p>
+    <label for="title">Title:</label>
+    <input id="post_title" name="post[title]" type="text" value="<%= @post.title %>" />
+  </p>
+  <p>
+    <label for="title">Content:</label>
+    <textarea name="post[content]" id="post_content"><%= @post.content %></textarea>
+  </p>
+  <p>
+    <input type="submit" value="Submit" />
+  </p>
+</form>
+
+ 

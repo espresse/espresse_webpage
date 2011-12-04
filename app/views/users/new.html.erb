@@ -1,0 +1,25 @@
+<h1>Sign Up</h1>
+
+<form accept-charset="UTF-8" action="<%= url(:create_user) %>" method="post">
+    <input name="utf8" type="hidden" value="&#x2713;" />
+
+  <p>
+    <label for="title">Email:</label>
+    <input id="user_email" name="user[email]" type="text" />
+  </p>
+
+  <p>
+    <label for="title">Password:</label>
+    <input name="user[password]" id="user_password" type="password" />
+  </p>
+
+  <p>
+    <label for="title">Password confirmation:</label>
+    <input name="user[password_confirmation]" id="user_password_confirmation" type="password">
+  </p>
+  <p>
+    <input type="submit" value="Submit" />
+  </p>
+</form>
+
+
