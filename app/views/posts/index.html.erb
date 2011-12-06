@@ -1,5 +1,8 @@
 <% @posts.each do |post| %>
-	<p><%= link_to post.title, url_to(post) %> </p>
+	<h1><%= link_to post.title, url_to(post) %></h1>
+	<p><%= post.preface %></p>
 <% end %>
 
-<%= link_to "New post", url(:new_post) %> 
+<% if current_user.is_admin? %>
+	<%= link_to "New post", url(:new_post) %> 
+<% end %>

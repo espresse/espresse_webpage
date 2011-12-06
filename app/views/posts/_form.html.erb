@@ -9,8 +9,16 @@
     <input id="post_title" name="post[title]" type="text" value="<%= @post.title %>" />
   </p>
   <p>
+    <label for="title">Preface:</label>
+    <textarea name="post[preface]" id="post_preface"><%= @post.preface %></textarea>
+  </p>
+  <p>
     <label for="title">Content:</label>
     <textarea name="post[content]" id="post_content"><%= @post.content %></textarea>
+  </p>
+  <p>
+    <input name="post[is_published]" type="hidden" value="0" />
+    <input type="checkbox" id="post_is_published" name="post[is_published]" value="1" <%= "checked='checked'" if @post.is_published? %> /> Publish
   </p>
   <p>
     <input type="submit" value="Submit" />
