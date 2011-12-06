@@ -1,4 +1,4 @@
-class Guest < User
+class Guest
 
   	def email
   		""
