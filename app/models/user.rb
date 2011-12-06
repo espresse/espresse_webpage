@@ -13,6 +13,7 @@ class User
   field :email
   field :password_hash
   field :password_salt
+  field :is_admin, :type => Boolean, :default => false
 
   before_save :encrypt_password
 
@@ -34,5 +35,17 @@ class User
 
   def to_json(*args)
     super :only => [:id, :email, :created_at, :updated_at]
+  end
+
+  def is_admin?
+    self.is_admin
+  end
+
+  def is_guest?
+    false
+  end
+
+  def is_user?
+    true
   end
 end
