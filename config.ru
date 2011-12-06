@@ -45,7 +45,7 @@ end
 
 if ENV['RACK_ENV'] == "production"
 
-  #db:development
+  use Rack::Static, :urls => ["/css", "/images", "/javascripts"], :root => "public"
  
 end
 
