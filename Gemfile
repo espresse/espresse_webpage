@@ -11,7 +11,6 @@ gem "mongoid", "~> 2.3"
 gem "bson_ext", "~> 1.4"
 gem 'tilt'
 gem 'erubis'
-gem 'simple_rack_framework', :path => '../simple_rack_framework'
-gem 'unicorn'
+gem 'simple_rack_framework', :git => 'git://github.com/espresse/simple_rack_framework.git'
 gem 'facets'
 gem 'bcrypt-ruby', :require => 'bcrypt'
