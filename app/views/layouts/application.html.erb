@@ -1,40 +1,95 @@
-<html>
-  <head>
-    <title></title>
-    <%= stylesheet_tag("style") %>
-    <%= javascript_tag("jquery-1.6.4.min") %>
-  </head>
-  <body>
-    <div>
-      <% if current_user %>
-        Logged in as <%= current_user.email %>
-        <%= link_to "Log out", url(:signout) %>
-      <% else %>
-        <%= link_to "Sign up", url(:signup) %> or 
-        <%= link_to "Log in", url(:signin) %>
-      <% end %>
-    </div>
-
-    <% %w[notice error warning alert info].each do |key| %>
+<% # coding: UTF-8 %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Espresse - The Blog</title>
+<meta charset="UTF-8">
+<meta name="description" content="Geek-only friendly, W3C-compliant, CSS3- and HTML5-based website template with a Creative Commons Attribution-Share Alike 3.0 Unported License.">
+<meta name="robots" content="index,follow,noarchive">
+<%= stylesheet_tag("a") %>
+</head>
+<body>
+  <div id="a">
+    <header>
+            <a href="#" title="Go to Homepage"><strong>Espresse</strong>  - The Blog</a>
+          <p>Geek friendly ;)</p>
+    </header>
+    <div id="b">
+      <% %w[notice error warning alert info].each do |key| %>
       <% if flash[key] %>
-        <div id="<%= "flash_#{key}" %>" class="flash">
+        <div class="<%= "flash_#{key}" %>" id="flash">
           <%= flash[key] %>
         </div>
       <% end %>
     <% end %>
-
-    <div id="head">
-      <% yield_content :head %>
-    <div>
-
-    <%= yield %>
-
-    <hr />
-    <div class="small_text">
-      <p>PARAMS: <%= params %></p>
-      <p>ENV: <%= ENV['RACK_ENV'] %></p>
-      <p>Session: <%= session %></p>
+      <article>
+        <%= yield %>
+      </article>
+      <aside>
+        <h4>Search</h4>
+        <form action="#" class="s">
+          <input name="search" type="text" value="Type term and hit enter...">
+        </form>
+        <h4>O autorze</h4>
+        <div id="c">
+          <img src="/images/photo.jpg" alt="Michał Ostrowski">
+          <p>Podróżnik, rowerzysta, zakochany w swojej żonie i fascynat kodów źródłowych.</p>
+          <b>Podążaj za mną :)</b>
+          <p><a href="#" title="Follow me">G+</a> | <a href="#" title="Follow me">Facebook</a></p>
+        </div>
+        <nav>
+          <h4>Nawigacja</h4>
+          <ul>
+            <% if current_user.is_user? %>
+              <li><%= link_to "Log out", url(:signout) %></li>
+            <% else %>
+              <li><%= link_to "Sign up", url(:signup) %></li>
+              <li><%= link_to "Log in", url(:signin) %></li>
+            <% end %>
+          </ul>
+        </nav>
+        
+        <h4>Blogroll</h4>
+        <ul>
+          <li><a href="#">Link1</a></li>
+          <li><a href="#">Link2</a></li>
+          <li><a href="#">Link3</a></li>
+          <li><a href="#">Link4</a></li>
+        </ul>
+        <h4>Tagi</h4>
+        <ul id="tagcloud">
+          <li class="tagcloudsize-1"><a href="#">Lorem</a></li>
+          <li class="tagcloudsize-2"><a href="#">Ipsum</a></li>
+          <li class="tagcloudsize-3"><a href="#">Dolor</a></li>
+          <li class="tagcloudsize-2"><a href="#">Sit Amet</a></li>
+          <li class="tagcloudsize-1"><a href="#">Consectetur</a></li>
+        </ul> 
+      </aside>
     </div>
+    <footer>
+      <!-- 
+      ### LICENSE
+      ############
 
-  </body>
+      This W3C-compliant, CSS-based website template has a 
+      Creative Commons Attribution-Share Alike 3.0 Unported License.
+
+      http://creativecommons.org/licenses/by-sa/3.0/
+
+      In short, you must:
+      + keep the credit links in the footer intact
+      + not change the license (e.g. copywriting my work)
+
+
+      ### BREAKING THE LICENSE
+      #########################
+
+      Breaking the rules of the license will result in me initiating
+      the necessary legal procedures and publicly shaming you here:
+
+      http://owmx.com/hall-of-shame/
+      -->
+      <p>Template Design &amp; Markup by <a href="http://jabz.net/contact/jonas-jacek">Jonas Jacek</a> | <a href="http://owmx.com/" title="Free HTML5 &amp; CSS3 Web Templates">Free Web Templates</a>.</p>
+    </footer>
+  </div>
 </html>
