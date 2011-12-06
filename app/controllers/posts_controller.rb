@@ -1,7 +1,12 @@
 class PostsController < ApplicationController
+	before_filter :check_if_authorized, :except=>[:index, :show]
 	before_filter :find_post, :only => [:show, :edit, :update, :destroy]
 	def index
-		@posts = Post.all
+		if current_user.is_admin?
+			@posts = Post.all.desc(:created_at)
+		else
+			@posts = Post.published.desc(:created_at)
+		end
 		render :index
 	end
 
@@ -29,6 +34,7 @@ class PostsController < ApplicationController
 
 	def update
 		if @post.update_attributes(params[:post])
+		  flash[:notice] = "Post has been updated correctly"
 	      redirect_to url_to(@post)
 	    else
 	      render :edit
