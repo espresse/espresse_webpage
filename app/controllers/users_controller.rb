@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :check_if_authenticated, :except=>[:new, :create]
+  before_filter :check_if_authenticated, :only=>[:show]
 
   def show
     @user = current_user
@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    unless current_user
+    unless current_user.is_user?
       @user = User.new
       render :new
     else
