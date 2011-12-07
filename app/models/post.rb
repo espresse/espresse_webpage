@@ -10,6 +10,10 @@ class Post
 	field :preface
 	field :is_published, :type => Boolean, :default => false
 
+	index :permalink
+
+	has_many :post_comments
+
 	before_save :create_permalink
 
 	def to_param

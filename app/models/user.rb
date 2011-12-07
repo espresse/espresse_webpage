@@ -15,6 +15,8 @@ class User
   field :password_salt
   field :is_admin, :type => Boolean, :default => false
 
+  has_many :comments
+
   before_save :encrypt_password
 
   def encrypt_password

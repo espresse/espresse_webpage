@@ -9,9 +9,9 @@ require 'facets'
 
 require 'simple_rack_framework'
 
-
 require 'rack/contrib'
 require "rack/csrf"
+
 Tilt.prefer Tilt::ErubisTemplate
 
 require APP_ROOT / "app" / "controllers" / "application_controller.rb"
@@ -28,33 +28,20 @@ if ENV['RACK_ENV']=="development"
   #use Rack::ShowStatus      # Nice looking 404s and other messages
   use Rack::ShowExceptions  # Nice looking errors
   use Rack::Reloader
-
-  # use this only for developement environment
-  # static files should be served by apache/nginx etc.
-  # uncomment iif ythis 
-   use Rack::Static, :urls => ["/css", "/images", "/javascripts"], :root => "public"
-
-  #db:development
-  
 end
 
 if ENV['RACK_ENV'] == "test"
-  #db:test
-  
 end
 
 if ENV['RACK_ENV'] == "production"
-
-  use Rack::Static, :urls => ["/css", "/images", "/javascripts"], :root => "public"
- 
 end
 
-
+use Rack::Static, :urls => ["/css", "/images", "/javascripts"], :root => "public"
 use Rack::Session::Cookie
 use Rack::MethodOverride
 use Rack::Flash
 use Rack::JSONP
-#use Rack::Csrf
+use Rack::Csrf
 
 run Application::Router
 
