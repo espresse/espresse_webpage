@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/espresse/simple_rack_framework.git
-  revision: 2a48144c8c5fd3006f2351729ba931bca71f1ccc
+  revision: bdc2e305f226f7fc3880ea9688c8406813651363
   specs:
-    simple_rack_framework (0.0.3)
+    simple_rack_framework (0.0.4)
       erubis
       extlib
       facets
