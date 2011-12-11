@@ -1,0 +1,42 @@
+<form accept-charset="UTF-8" action="<%= comment.created_at ? url_to(comment, :update) : url(:create_comment) %>" method="post">
+  <%= csrf_protection_tag %>
+    <% if comment.created_at %>
+        <input name="_method" type="hidden" value="put" />
+    <% end %>
+    <input name="utf8" type="hidden" value="&#x2713;" />
+    <input name="comment[_type]" type="hidden" value="<%= comment._type %>" />
+    <input name="parent[type]" type="hidden" value="<%= comment.parent.class %>" />
+    <input name="parent[id]" type="hidden" value="<%= comment.parent.id %>" />
+    
+    <% comment.errors.messages.each do |message| %>
+      <%= message %>
+    <% end %>
+    
+    <% if current_user.is_guest? %>
+      <p>
+        <%= "Name " + comment.errors[:guest_name].join(";") unless comment.errors[:guest_name].blank? %>
+        <label for="email">Name:</label>
+        <input id="comment_guest_name" name="comment[guest_name]" type="text" value="<%= comment.guest_name %>" />
+      </p>
+      <p>
+        <%= "Email " + comment.errors[:guest_email].join(";") unless comment.errors[:guest_email].blank? %>
+        <label for="email">Email:</label>
+        <input id="comment_guest_email" name="comment[guest_email]" type="text" value="<%= comment.guest_email %>" />
+      </p>
+
+      <p>
+        <label for="email">WWW:</label>
+        <input id="comment_guest_www" name="comment[guest_www]" type="text" value="<%= comment.guest_www %>" />
+      </p>
+    <% else %>
+        <input name="comment[user_id]" type="hidden" value="<%= current_user.id %>" />    
+    <% end %>
+    <p>
+      <%= "Content " + comment.errors[:content].join(";") unless comment.errors[:content].blank? %>
+      <label for="title">Content:</label>
+      <textarea name="comment[content]" id="comment_content"><%= comment.content %></textarea>
+    </p>
+    <p>
+      <input type="submit" value="Submit" />
+    </p>
+</form>

@@ -12,7 +12,7 @@ class Post
 
 	index :permalink
 
-	has_many :post_comments
+	has_many :comments, :class_name => "PostComment"
 
 	before_save :create_permalink
 

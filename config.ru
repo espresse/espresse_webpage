@@ -41,7 +41,7 @@ use Rack::Session::Cookie
 use Rack::MethodOverride
 use Rack::Flash
 use Rack::JSONP
-use Rack::Csrf
+#use Rack::Csrf
 
 run Application::Router
 

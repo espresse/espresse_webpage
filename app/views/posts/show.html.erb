@@ -2,6 +2,19 @@
 <p><strong><%= @post.preface %></strong></p>
 <p><%= @post.content %></p>
 
+<h2>Comments: <%= @post.comments.size %></h2>
+
+<% @post.comments.each do |comment| %>
+	<p>
+		<h3><%= comment.user.email rescue comment.guest_name %></h3>
+		<small><%= comment.created_at %></small>
+		<div><%= comment.content %></div>
+	</p>
+<% end %>
+
+<%= partial "/comments/form", { :with => @post, :comment => @post.comments.new } %>
+
+
 <%= link_to "Show all", url(:posts) %> 
 
 <% if current_user.is_admin? %>

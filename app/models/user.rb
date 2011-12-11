@@ -7,9 +7,9 @@ class User
   attr_accessor :password
   attr_accessor :password_confirmation
 
-
   validates_confirmation_of :password
 
+  field :name
   field :email
   field :password_hash
   field :password_salt
