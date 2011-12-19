@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/espresse/simple_rack_framework.git
-  revision: bdc2e305f226f7fc3880ea9688c8406813651363
+  revision: 7ed09995c2e172d77a81ba55dd234ba7e71b3a31
   specs:
-    simple_rack_framework (0.0.4)
+    simple_rack_framework (0.0.6)
       erubis
       extlib
       facets
@@ -24,10 +24,11 @@ GEM
     activesupport (3.1.3)
       multi_json (~> 1.0)
     bcrypt-ruby (3.0.1)
-    bson (1.5.1)
-    bson_ext (1.5.1)
+    bson (1.5.2)
+    bson_ext (1.5.2)
+      bson (= 1.5.2)
     builder (3.0.0)
-    daemons (1.1.4)
+    daemons (1.1.5)
     erubis (2.7.0)
     eventmachine (0.12.10)
     extlib (0.9.15)
@@ -36,8 +37,8 @@ GEM
       rack (>= 1.0.0)
       url_mount (~> 0.2.1)
     i18n (0.6.0)
-    mongo (1.5.1)
-      bson (= 1.5.1)
+    mongo (1.5.2)
+      bson (= 1.5.2)
     mongoid (2.3.4)
       activemodel (~> 3.1)
       mongo (~> 1.3)
