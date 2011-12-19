@@ -1,24 +1,18 @@
-<form accept-charset="UTF-8" action="<%= @post.created_at ? url_to(@post, :update) : url(:create_post) %>" method="post">
-  <%= csrf_protection_tag %>
-    <% if @post.created_at %>
-        <input name="_method" type="hidden" value="put" />
-    <% end %>
-    <input name="utf8" type="hidden" value="&#x2713;" />
+<%= form_tag @post %>
   <p>
     <label for="title">Title:</label>
-    <input id="post_title" name="post[title]" type="text" value="<%= @post.title %>" />
+    <%= input_tag :text, :value=>"#{@post.title}", :name=>"post[title]", :id=>"post_title" %>
   </p>
   <p>
     <label for="title">Preface:</label>
-    <textarea name="post[preface]" id="post_preface"><%= @post.preface %></textarea>
+    <%= tag(:textarea, :content=>h(@post.preface), :name=>"post[preface]", :id=>"post_preface") %>
   </p>
   <p>
     <label for="title">Content:</label>
-    <textarea name="post[content]" id="post_content"><%= @post.content %></textarea>
+    <%= tag(:textarea, :content=>h(@post.content), :name=>"post[content]", :id=>"post_content") %>
   </p>
   <p>
-    <input name="post[is_published]" type="hidden" value="0" />
-    <input type="checkbox" id="post_is_published" name="post[is_published]" value="1" <%= "checked='checked'" if @post.is_published? %> /> Publish
+    <%= check_box_tag(@post, :is_published) %> Publish
   </p>
   <p>
     <input type="submit" value="Submit" />
