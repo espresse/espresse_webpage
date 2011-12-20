@@ -9,8 +9,7 @@ module Application
   	resources :users
   	resources :sessions
   	resources :posts, :subpath => "/:year/:month/:day"
-  	resources :comments
-    
+  	resources :comments  
   end
 end
 
