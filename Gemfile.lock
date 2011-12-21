@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/espresse/simple_rack_framework.git
-  revision: 7ed09995c2e172d77a81ba55dd234ba7e71b3a31
+  revision: 225945b60ab42e9d1049bfd3a9d9c3c9ef6d3e37
   specs:
-    simple_rack_framework (0.0.6)
+    simple_rack_framework (0.0.7)
       erubis
       extlib
       facets
@@ -13,6 +13,13 @@ GIT
       rack-jsonp
       rack_csrf
       tilt
+
+GIT
+  remote: git://github.com/espresse/simple_rack_framework_contrib.git
+  revision: 99e013d58be48cd7621109e93159b982438fc34b
+  specs:
+    simple_rack_framework_contrib (0.0.2)
+      facets
 
 GEM
   remote: http://rubygems.org/
@@ -79,5 +86,6 @@ DEPENDENCIES
   rack-jsonp
   rack_csrf
   simple_rack_framework!
+  simple_rack_framework_contrib!
   thin
   tilt

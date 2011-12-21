@@ -1,4 +1,5 @@
-<h1><%= @post.title %> - <%= @post.is_published %></h1>
+<h1><%= @post.title %> <%= " - #{@post.is_published}" if current_user.is_admin? %></h1>
+<h2><%= link_to_unless_current("post", url_to(@post)) %></h2>
 <p><strong><%= @post.preface %></strong></p>
 <p><%= @post.content %></p>
 
@@ -6,7 +7,7 @@
 
 <% @post.comments.each do |comment| %>
 	<p>
-		<h3><%= comment.user.email rescue comment.guest_name %></h3>
+		<h3><%= comment.user.name rescue comment.guest_name %></h3>
 		<small><%= comment.created_at %></small>
 		<div><%= comment.content %></div>
 	</p>

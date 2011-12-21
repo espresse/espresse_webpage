@@ -1,6 +1,7 @@
 module Application
 	require 'facets'
 	require 'simple_rack_framework'
+	require 'simple_rack_framework_contrib'
 
 	require "#{APP_ROOT}/app/controllers/application_controller.rb"
 
@@ -20,6 +21,7 @@ module Application
 	end
 
 	Tilt.prefer Tilt::ErubisTemplate
+
 
 	AppRun = Application::Router
 
